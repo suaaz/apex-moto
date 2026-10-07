@@ -9,6 +9,7 @@ let currentBrand = 'all';
 let searchQuery = '';
 let currentFactIndex = 0;
 let currentConceptIndex = 0;
+let currentEngineTab = 'cars'; // 'cars' | 'motos' | 'comparisons' | 'facts'
 
 // Fallback high-contrast motorcycle silhouette SVG if an image fails to load
 const FALLBACK_MOTO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350" fill="none"><rect width="600" height="350" fill="%23111723"/><circle cx="160" cy="230" r="55" stroke="%23ff3b30" stroke-width="8"/><circle cx="440" cy="230" r="55" stroke="%23ff3b30" stroke-width="8"/><path d="M160 230L260 140L350 140L440 230M260 140L320 230L440 230M260 140L230 110L200 110" stroke="%23f8fafc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="300" y="70" fill="%2394a3b8" font-family="sans-serif" font-size="16" font-weight="700" text-anchor="middle">POWERBIKE EDITIONS</text></svg>`;
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarNavigation();
   initHistoryFact();
   initDailyConcepts();
+  initEngineLab();
   initRegionTabs();
   initCategoryFilters();
   initBrandFilters();
@@ -35,6 +37,7 @@ function initNavbarNavigation() {
   const sections = [
     { id: 'history-section', el: document.getElementById('history-section') },
     { id: 'concepts-section', el: document.getElementById('concepts-section') },
+    { id: 'engines-section', el: document.getElementById('engines-section') },
     { id: 'bikes-section', el: document.getElementById('bikes-section') }
   ];
 
@@ -215,6 +218,186 @@ window.searchBikeName = function(bikeName) {
     }
   }
 };
+
+// ==========================================================================
+// 2.5 Automobile & Motorcycle Engine Engineering Lab
+// ==========================================================================
+function initEngineLab() {
+  const tabBtns = document.querySelectorAll('.engine-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentEngineTab = btn.dataset.engineTab;
+      tabBtns.forEach(b => b.classList.toggle('active', b.dataset.engineTab === currentEngineTab));
+      renderEngineContent();
+    });
+  });
+
+  renderEngineContent();
+}
+
+function renderEngineContent() {
+  const container = document.getElementById('engines-content-area');
+  if (!container) return;
+
+  if (currentEngineTab === 'cars') {
+    if (typeof AUTOMOBILE_ENGINES === 'undefined') return;
+    container.innerHTML = `
+      <div class="engines-grid">
+        ${AUTOMOBILE_ENGINES.map(eng => `
+          <article class="engine-card">
+            <div class="engine-card-header">
+              <div class="engine-badge-row">
+                <span class="engine-badge">${eng.badge}</span>
+                <span class="engine-category-tag">${eng.category}</span>
+              </div>
+              <h3 class="engine-card-title">${eng.name}</h3>
+              <p class="engine-summary">${eng.summary}</p>
+            </div>
+
+            <div class="engine-card-body">
+              <div class="engine-physics-box">
+                <div class="engine-physics-label">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  Physics & Balancing Mechanics
+                </div>
+                <p class="engine-physics-text">${eng.physicsExplained.replace(/\n\n/g, '<br><br>')}</p>
+              </div>
+
+              <div class="engine-tradeoffs-row">
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; color:var(--accent-emerald); display:block; margin-bottom:6px;">Advantages</strong>
+                  <ul class="engine-pro-list">
+                    ${eng.pros.map(p => `<li>${p}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; color:#f87171; display:block; margin-bottom:6px;">Trade-offs</strong>
+                  <ul class="engine-con-list">
+                    ${eng.cons.map(c => `<li>${c}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="engine-vehicles-block">
+                <div class="engine-vehicles-label">Iconic Vehicles Equipped:</div>
+                <div class="engine-vehicle-tags">
+                  ${eng.famousVehicles.map(v => `<span class="engine-vehicle-tag">${v}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="engine-fact-callout">
+                <strong style="color:var(--accent-orange);">💡 Engineering Marvel: </strong>
+                <span>${eng.engineeringFact}</span>
+              </div>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    `;
+  } else if (currentEngineTab === 'motos') {
+    if (typeof MOTORCYCLE_ENGINES === 'undefined') return;
+    container.innerHTML = `
+      <div class="engines-grid">
+        ${MOTORCYCLE_ENGINES.map(eng => `
+          <article class="engine-card">
+            <div class="engine-card-header">
+              <div class="engine-badge-row">
+                <span class="engine-badge" style="background:rgba(255,119,0,0.15); color:#ff9f43; border-color:rgba(255,119,0,0.3);">${eng.badge}</span>
+                <span class="engine-category-tag">${eng.category}</span>
+              </div>
+              <h3 class="engine-card-title">${eng.name}</h3>
+              <p class="engine-summary">${eng.summary}</p>
+            </div>
+
+            <div class="engine-card-body">
+              <div class="engine-physics-box">
+                <div class="engine-physics-label" style="color:var(--accent-blue);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  Motorcycle Dynamics & Crank Mechanics
+                </div>
+                <p class="engine-physics-text">${eng.physicsExplained.replace(/\n\n/g, '<br><br>')}</p>
+              </div>
+
+              <div class="engine-tradeoffs-row">
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; color:var(--accent-emerald); display:block; margin-bottom:6px;">Advantages</strong>
+                  <ul class="engine-pro-list">
+                    ${eng.pros.map(p => `<li>${p}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; color:#f87171; display:block; margin-bottom:6px;">Trade-offs</strong>
+                  <ul class="engine-con-list">
+                    ${eng.cons.map(c => `<li>${c}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="engine-vehicles-block">
+                <div class="engine-vehicles-label">Iconic Powerbikes Equipped:</div>
+                <div class="engine-vehicle-tags">
+                  ${eng.famousBikes.map(b => `<span class="engine-vehicle-tag" style="cursor:pointer;" onclick="searchBikeName('${b.split(' ')[0]}')">${b}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="engine-fact-callout">
+                <strong style="color:var(--accent-orange);">💡 Moto Engineering Fact: </strong>
+                <span>${eng.engineeringFact}</span>
+              </div>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    `;
+  } else if (currentEngineTab === 'comparisons') {
+    if (typeof CAR_VS_MOTO_COMPARISONS === 'undefined') return;
+    container.innerHTML = `
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        ${CAR_VS_MOTO_COMPARISONS.map(cmp => `
+          <article class="comparison-card">
+            <div class="comparison-header">
+              <h3 class="comparison-title">${cmp.title}</h3>
+              <span class="engine-badge">${cmp.category}</span>
+            </div>
+            <p style="font-size:1.05rem; color:#cbd5e1; margin-bottom:14px; font-weight:600;">${cmp.summary}</p>
+            <div class="comparison-text">${cmp.deepDive.replace(/\n\n/g, '<br><br>')}</div>
+            <div class="comparison-takeaway-bar">
+              <span style="color:var(--accent-blue); font-weight:800;">🔑 Core Engineering Takeaway: </span>
+              ${cmp.takeaway}
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    `;
+  } else if (currentEngineTab === 'facts') {
+    if (typeof ENGINE_ENGINEERING_FACTS === 'undefined') return;
+    container.innerHTML = `
+      <div class="engines-grid">
+        ${ENGINE_ENGINEERING_FACTS.map(fact => `
+          <article class="engine-card" style="border-color:rgba(255,119,0,0.3);">
+            <div class="engine-card-header">
+              <div class="engine-badge-row">
+                <span class="history-badge">${fact.tag}</span>
+                <span class="history-year-tag">${fact.year}</span>
+              </div>
+              <h3 class="engine-card-title">${fact.title}</h3>
+            </div>
+            <div class="engine-card-body">
+              <p style="font-size:0.95rem; line-height:1.7; color:#cbd5e1; margin-bottom:18px;">${fact.story}</p>
+              <div class="history-takeaway-box" style="margin-top:auto;">
+                <div class="takeaway-icon">⚡</div>
+                <div class="takeaway-text">
+                  <strong style="color:var(--accent-orange);">Engineering Lesson: </strong>
+                  ${fact.takeaway}
+                </div>
+              </div>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    `;
+  }
+}
 
 // ==========================================================================
 // 3. Region Tabs & Filtering (Africa, Global, All)

@@ -4,23 +4,55 @@ A personal, high-performance web portal built to teach motorcycle enthusiasts ab
 
 ---
 
-## 🚀 How to Run the Website
+## 🌐 Live Website & Repository
 
-You can run and explore **Apex Moto** instantly with zero installation or build steps:
+- **Live URL**: [https://suaaz.github.io/apex-moto/](https://suaaz.github.io/apex-moto/)
+- **GitHub Repository**: [https://github.com/suaaz/apex-moto](https://github.com/suaaz/apex-moto)
+
+---
+
+## 🚀 How to Run Locally
+
+You can explore **Apex Moto** instantly with zero installation or build steps:
 
 1. **Direct Double-Click**:
    - Navigate to `c:\Users\abdul-azeez.sulaimon\Downloads\Bikes`
    - Double-click `index.html` to open it in your favorite browser (Chrome, Edge, Firefox, Brave, Safari).
 
 2. **Or via Command Line**:
-   - Open PowerShell or Terminal in this folder and run:
-     ```powershell
-     Start-Process "index.html"
-     ```
+   ```powershell
+   Start-Process "index.html"
+   ```
 
 ---
 
 ## ⚡ What's Inside
+
+### 1. ⚙️ Automobile & Motorcycle Engine Engineering Lab
+Interactive deep-dive into internal combustion physics, balancing mechanics, and firing orders:
+- **🏎️ Car Engines Architecture**:
+  - **Inline-6 (Straight-Six)**: Inherently balanced primary & secondary harmonics (BMW S58 / 2JZ-GTE).
+  - **V8 (Crossplane vs Flatplane)**: 90° American muscle rumble vs 180° 9,000-RPM Ferrari/Corvette scream.
+  - **Flat-6 (Boxer)**: Porsche 911 ultra-low center of gravity and horizontal opposed punch.
+  - **V12 Engine**: Two straight-sixes firing every 60° for continuous, coin-balancing turbine thrust.
+  - **Bugatti W16 Quad-Turbo**: 8.0-litre 1,600 HP packaging miracle with 4 turbos and 10 radiators.
+  - **Rotary (Wankel)**: Triangular rotor orbiting an eccentric shaft with zero reciprocating pistons (Mazda 787B / RX-7).
+- **🏍️ Motorcycle Engines Architecture**:
+  - **V4 Superbike (Ducati / Aprilia / Honda)**: Slim frontal profile, short stiff crankshaft, and counter-rotating anti-wheelie physics.
+  - **270° Crossplane Parallel-Twin**: The modern industry paradigm (CP2, Africa Twin, Transalp, GS 900) mimicking 90° V-twin character.
+  - **Inline-Four (Screamer vs CP4)**: Oversquare short-stroke 15,000-RPM screamers.
+  - **BMW Boxer Twin (ShiftCam)**: Low center of gravity, ambient cooling, and natural trail pivot.
+  - **Inline-Triple (Yamaha CP3 & Triumph 765)**: Moto2 engine combining twin punch and 4-cylinder high-rev howl.
+- **⚖️ Car vs Motorcycle Physics Comparisons**:
+  - **Why Bikes Rev to 15,000 RPM (While Cars Redline at 6,500)**: Mean piston speed limits (\(\sim 25\text{ m/s}\)), 48mm short stroke, and 160-gram featherweight pistons.
+  - **Specific Output (HP/Litre)**: Naturally aspirated superbikes making 215+ HP/Litre (nearly double a Porsche GT3 or Ferrari V12).
+  - **Unit Construction**: Packaging engine, transmission, and wet clutch inside a single aluminum casting sharing the same JASO MA2 oil.
+  - **Wet Multi-Plate vs Dry Automotive Clutch**: Why bikes stack 8-9 small oil-cooled plates in series.
+- **💡 Extreme Engine Engineering Facts**:
+  - The Lexus LFA digital tachometer Yamaha built because analog needles couldn't keep up with 0.6s 9,000-RPM acceleration.
+  - Top Fuel dragsters generating 11,000 HP and running on melted spark plugs for the final 1.5 seconds.
+  - Formula 1 breaking the 50% thermal efficiency barrier.
+  - Ducati's reverse-spinning crankshaft that cancels wheelie inertia.
 
 ### 1. 🏍️ Tabs: Famous in Africa vs. Famous Globally
 - **Famous in Africa**: Curated selection of powerbikes celebrated across African motorcycling communities (e.g., Nigeria's superbike clubs in Lagos & Abuja, South Africa's Kyalami & Garden Route, Kenya's Great Rift Valley rallies, and trans-Sahara desert routes):

@@ -28,6 +28,7 @@
       <nav class="nav-links">
         <a href="#history-section" class="nav-link">History Vault</a>
         <a href="#concepts-section" class="nav-link">Daily Knowledge</a>
+        <a href="#engines-section" class="nav-link">Engine Lab</a>
         <a href="#bikes-section" class="nav-link">Bike Models</a>
       </nav>
     </div>
@@ -182,6 +183,42 @@
           <span class="concept-bikes-label">Bikes with this technology:</span>
           <div class="concept-bike-tags" id="concept-bike-tags"></div>
         </div>
+  <!-- Automobile & Motorcycle Engine Engineering Lab Section -->
+  <section class="engines-section" id="engines-section">
+    <div class="container">
+      <div class="section-header-block">
+        <span class="section-label" style="color: var(--accent-blue);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          Automobile & Motorcycle Engine Engineering Lab
+        </span>
+        <h2 class="section-title">The Engineering Behind Car & Moto Engines</h2>
+        <p class="section-desc">
+          Compare internal combustion physics, balancing forces, firing orders, and discover why motorcycle engines rev to 15,000 RPM while car engines redline at 6,500 RPM.
+        </p>
+      </div>
+
+      <!-- Engine Category Tabs -->
+      <div class="engine-tab-bar">
+        <button class="engine-tab-btn active" data-engine-tab="cars">
+          <span>🏎️ Car Engines (V8, I6, Boxer, V12, W16, Rotary)</span>
+        </button>
+        <button class="engine-tab-btn" data-engine-tab="motos">
+          <span>🏍️ Motorcycle Engines (V4, 270° Twin, CP4, Boxer, Triple)</span>
+        </button>
+        <button class="engine-tab-btn" data-engine-tab="comparisons">
+          <span>⚖️ Car vs Moto Physics (RPM, Litre HP, Unit Construction)</span>
+        </button>
+        <button class="engine-tab-btn" data-engine-tab="facts">
+          <span>💡 Extreme Engine Facts</span>
+        </button>
+      </div>
+
+      <!-- Engines Dynamic Content Area -->
+      <div id="engines-content-area">
+        <!-- Rendered dynamically via app.js -->
       </div>
     </div>
   </section>
@@ -450,6 +487,7 @@
   <!-- Scripts -->
   <script src="data/facts.js"></script>
   <script src="data/concepts.js"></script>
+  <script src="data/engines.js"></script>
   <script src="data/bikes.js"></script>
   <script src="app.js"></script>
 </body>
