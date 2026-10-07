@@ -15,6 +15,7 @@ const FALLBACK_MOTO_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org
 
 // DOM Elements
 document.addEventListener('DOMContentLoaded', () => {
+  initNavbarNavigation();
   initHistoryFact();
   initDailyConcepts();
   initRegionTabs();
@@ -25,6 +26,63 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBikes();
   updateCounts();
 });
+
+// ==========================================================================
+// 0. Navbar Dynamic Focus & Scroll Spy
+// ==========================================================================
+function initNavbarNavigation() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = [
+    { id: 'history-section', el: document.getElementById('history-section') },
+    { id: 'concepts-section', el: document.getElementById('concepts-section') },
+    { id: 'bikes-section', el: document.getElementById('bikes-section') }
+  ];
+
+  function setActiveLink(targetId) {
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      link.classList.toggle('active', href === `#${targetId}`);
+    });
+  }
+
+  // Handle click on nav items
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        setActiveLink(targetId);
+      }
+    });
+  });
+
+  // Dynamic Scroll Spy
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY + 140; // offset for sticky navbar height
+
+    // If near the top hero area, remove active indicator
+    if (window.scrollY < 200) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      return;
+    }
+
+    let activeSectionId = '';
+    for (const section of sections) {
+      if (section.el) {
+        const top = section.el.offsetTop;
+        const height = section.el.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          activeSectionId = section.id;
+          break;
+        }
+      }
+    }
+
+    if (activeSectionId) {
+      setActiveLink(activeSectionId);
+    }
+  }, { passive: true });
+}
 
 // ==========================================================================
 // 1. Fun History Fact Section
