@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Moto | The Powerbike Compendium & Learning Portal</title>
+  <meta name="description" content="A personal masterclass in high-performance powerbikes, engineering concepts, history facts, and famous models across Africa and the globe.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="brand-logo">
+        <div class="brand-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5.5" cy="17.5" r="3.5"></circle>
+            <circle cx="18.5" cy="17.5" r="3.5"></circle>
+            <path d="M15 6h-5l-4 8h12.5"></path>
+            <path d="M9 17.5l3-7.5 4 4"></path>
+          </svg>
+        </div>
+        <span>APEX<span style="color: var(--accent-red);">MOTO</span></span>
+        <span class="brand-badge">Powerbikes Only</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#history-section" class="nav-link">History Vault</a>
+        <a href="#concepts-section" class="nav-link">Daily Knowledge</a>
+        <a href="#bikes-section" class="nav-link active">Bike Models</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="dot"></span>
+        <span>High-Performance Motorcycling Encyclopedia</span>
+      </div>
+
+      <h1 class="hero-title">
+        Master the World of <span class="text-gradient">Powerbikes</span>: Engineering, Models & Origins
+      </h1>
+
+      <p class="hero-subtitle">
+        Demystifying cc displacement, horsepower dynamics, physical chassis design, and the economic reasons behind the greatest superbikes in Africa and across the globe.
+      </p>
+
+      <div class="hero-stats-strip">
+        <div class="hero-stat-item">
+          <span class="stat-num">14+</span>
+          <span class="stat-label">Iconic Powerbikes</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Engineering Masterclasses</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="stat-num">7</span>
+          <span class="stat-label">Historical Chronicles</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="stat-num">221 Nm</span>
+          <span class="stat-label">Peak Engine Torque</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun History Fact Section -->
+  <section class="history-section" id="history-section">
+    <div class="container">
+      <div class="history-card">
+        <div class="history-header">
+          <div class="history-tag-group">
+            <span class="history-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              <span id="fact-badge">Historical Chronicle</span>
+            </span>
+            <span class="history-year-tag" id="fact-year">Era: 1999</span>
+          </div>
+
+          <button class="history-roll-btn" id="roll-fact-btn" title="Discover another fun motorcycle history fact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+            </svg>
+            <span>Roll Another Fact</span>
+          </button>
+        </div>
+
+        <div id="history-content-wrapper" class="history-content-body">
+          <h2 class="history-title" id="fact-title">Loading history fact...</h2>
+          <p class="history-summary" id="fact-summary"></p>
+          <p class="history-story" id="fact-story"></p>
+
+          <div class="history-takeaway-box">
+            <div class="takeaway-icon">💡</div>
+            <div class="takeaway-text">
+              <strong style="color: var(--accent-orange);">Key Takeaway: </strong>
+              <span id="fact-takeaway"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="history-dots" id="history-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Knowledge / Tech Concepts Section -->
+  <section class="concepts-section" id="concepts-section">
+    <div class="container">
+      <div class="section-header-block">
+        <span class="section-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          MotoTech Daily Knowledge
+        </span>
+        <h2 class="section-title">Powerbike Concepts Explained</h2>
+        <p class="section-desc">
+          Breakdowns of motorcycle physics, aerodynamics, and engineering innovations. Select any concept below to see how it works and why designers put it on powerbikes.
+        </p>
+      </div>
+
+      <!-- Quick Concept Selector Strip -->
+      <div class="concept-pills-bar" id="concept-pills-bar">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Active Concept Interactive Showcase -->
+      <div class="daily-concept-display">
+        <div class="concept-meta-bar">
+          <span class="concept-category-badge" id="concept-category">Engineering</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Core Moto Principles</span>
+        </div>
+
+        <h3 class="concept-title" id="concept-title">Concept Name</h3>
+        <p class="concept-subtitle" id="concept-subtitle">Subtitle</p>
+
+        <!-- 30-Second Analogy Box -->
+        <div class="concept-analogy-box">
+          <div style="font-size: 1.5rem; line-height: 1;">⚡</div>
+          <div>
+            <div class="analogy-label">The 30-Second Intuitive Analogy</div>
+            <p class="analogy-text" id="concept-analogy"></p>
+          </div>
+        </div>
+
+        <!-- How It Works vs Why It Matters -->
+        <div class="concept-breakdown-grid">
+          <div class="concept-how-section">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4M12 8h.01"></path>
+              </svg>
+              How the Physics & Engineering Works
+            </h4>
+            <p class="concept-how-text" id="concept-how"></p>
+          </div>
+
+          <div class="concept-why-section">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Why Designers Put It On Powerbikes
+            </h4>
+            <ul class="concept-why-list" id="concept-why-list"></ul>
+          </div>
+        </div>
+
+        <!-- Signature Bikes Footer -->
+        <div class="concept-bikes-footer">
+          <span class="concept-bikes-label">Bikes with this technology:</span>
+          <div class="concept-bike-tags" id="concept-bike-tags"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bikes Showcase Section -->
+  <section class="bikes-section" id="bikes-section">
+    <div class="container">
+      <div class="section-header-block">
+        <span class="section-label" style="color: var(--accent-red);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
+          </svg>
+          Models & Brands Compendium
+        </span>
+        <h2 class="section-title">Explore Iconic Powerbikes</h2>
+        <p class="section-desc">
+          Compare displacement, horsepower, top speeds, and physical engineering. Click <strong>"Read Deep-Dive & Features"</strong> on any bike to reveal its complete economic backstory and why it was built.
+        </p>
+      </div>
+
+      <div class="bikes-control-panel">
+        <!-- Main Region Tabs -->
+        <div class="region-tabs-bar">
+          <button class="region-tab-btn active" data-tab="africa">
+            <span>Famous in Africa</span>
+            <span class="tab-count-badge" id="count-africa">0</span>
+          </button>
+          <button class="region-tab-btn" data-tab="global">
+            <span>Famous Globally</span>
+            <span class="tab-count-badge" id="count-global">0</span>
+          </button>
+          <button class="region-tab-btn" data-tab="all">
+            <span>All Powerbikes</span>
+            <span class="tab-count-badge" id="count-all">0</span>
+          </button>
+        </div>
+
+        <!-- Search & Category Filters -->
+        <div class="filters-row">
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="bike-search-input" class="search-input" placeholder="Search GS, Africa Twin, Yamaha R1, Tenere, Ninja, CC, Africa...">
+          </div>
+
+          <div class="category-chips-group">
+            <button class="cat-chip active" data-category="all">All Styles</button>
+            <button class="cat-chip" data-category="Adventure">Adventure & Rally</button>
+            <button class="cat-chip" data-category="Supersport">Supersport / Superbike</button>
+            <button class="cat-chip" data-category="Naked">Hyper-Naked</button>
+            <button class="cat-chip" data-category="Cruiser">Power Cruiser / Muscle</button>
+          </div>
+        </div>
+
+        <!-- Brand Selector Chips -->
+        <div class="filter-sublabel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5"></path></svg>
+          Filter by Brand:
+        </div>
+        <div class="brand-chips-group">
+          <button class="brand-chip active" data-brand="all">All Brands</button>
+          <button class="brand-chip" data-brand="BMW Motorrad">BMW Motorrad (GSs)</button>
+          <button class="brand-chip" data-brand="Yamaha">Yamaha (R1, MT, Ténéré)</button>
+          <button class="brand-chip" data-brand="Honda">Honda (Africa Twin, CBR)</button>
+          <button class="brand-chip" data-brand="Kawasaki">Kawasaki (Ninja, KLR, H2)</button>
+          <button class="brand-chip" data-brand="Suzuki">Suzuki (Hayabusa, V-Strom)</button>
+          <button class="brand-chip" data-brand="Ducati">Ducati (Panigale, Multistrada)</button>
+          <button class="brand-chip" data-brand="KTM">KTM (Super Duke, Adventure)</button>
+          <button class="brand-chip" data-brand="Triumph">Triumph (Rocket 3)</button>
+          <button class="brand-chip" data-brand="Royal Enfield">Royal Enfield (Himalayan)</button>
+          <button class="brand-chip" data-brand="Bajaj Auto">Bajaj (Dominar)</button>
+          <button class="brand-chip" data-brand="Aprilia">Aprilia (RSV4)</button>
+        </div>
+      </div>
+
+      <!-- Bikes Cards Grid -->
+      <div class="bikes-grid" id="bikes-grid">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep-Dive Modal (Read More) -->
+  <div class="modal-backdrop" id="bike-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-bike-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="brand-icon-wrapper" style="width: 32px; height: 32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <circle cx="5.5" cy="17.5" r="3.5"></circle>
+              <circle cx="18.5" cy="17.5" r="3.5"></circle>
+              <path d="M15 6h-5l-4 8h12.5"></path>
+            </svg>
+          </div>
+          <h3 class="modal-title" id="modal-bike-title">Bike Details</h3>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-scroll-body">
+        <!-- Modal Hero Image -->
+        <div class="modal-hero-banner">
+          <img id="modal-hero-img" src="" alt="Bike hero photography" loading="lazy">
+          <div class="modal-banner-content">
+            <div>
+              <span class="modal-brand-hero" id="modal-brand-hero">Brand</span>
+              <h4 class="modal-name-hero" id="modal-name-hero">Model Name</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Deep Technical Specs Matrix -->
+        <h4 class="modal-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Complete Technical Specifications
+        </h4>
+
+        <div class="deep-specs-grid">
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Displacement (CC)</div>
+            <div class="deep-spec-value" id="spec-cc">-</div>
+            <div class="deep-spec-sub">Engine Displacement</div>
+          </div>
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Peak Horsepower</div>
+            <div class="deep-spec-value" id="spec-hp">-</div>
+            <div class="deep-spec-sub" id="spec-hp-rpm">-</div>
+          </div>
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Peak Torque</div>
+            <div class="deep-spec-value" id="spec-torque">-</div>
+            <div class="deep-spec-sub" id="spec-torque-rpm">-</div>
+          </div>
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Top Speed</div>
+            <div class="deep-spec-value" id="spec-speed">-</div>
+            <div class="deep-spec-sub">Factory Tested Velocity</div>
+          </div>
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Curb Weight</div>
+            <div class="deep-spec-value" id="spec-weight">-</div>
+            <div class="deep-spec-sub">Mass Ready-to-Ride</div>
+          </div>
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Fuel Tank Capacity</div>
+            <div class="deep-spec-value" id="spec-tank">-</div>
+            <div class="deep-spec-sub">Touring Range Volume</div>
+          </div>
+          <div class="deep-spec-card">
+            <div class="deep-spec-label">Seat Height</div>
+            <div class="deep-spec-value" id="spec-seat">-</div>
+            <div class="deep-spec-sub">Ground to Saddle</div>
+          </div>
+          <div class="deep-spec-card" style="grid-column: 1 / -1;">
+            <div class="deep-spec-label">Engine Architecture & Transmission</div>
+            <div class="deep-spec-value" style="font-size: 0.95rem; font-family: var(--font-sans);" id="spec-engine-type">-</div>
+            <div class="deep-spec-sub" id="spec-trans">-</div>
+          </div>
+        </div>
+
+        <!-- 2. Physical Features Breakdown -->
+        <h4 class="modal-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+            <line x1="16" y1="8" x2="2" y2="22"></line>
+            <line x1="17.5" y1="15" x2="9" y2="15"></line>
+          </svg>
+          Explained Physical Features & Chassis Architecture
+        </h4>
+
+        <div class="features-accordion-grid">
+          <div class="feature-pill-card">
+            <h5>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+              Frame & Chassis Design
+            </h5>
+            <p id="feat-chassis">-</p>
+          </div>
+          <div class="feature-pill-card">
+            <h5>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5z"></path></svg>
+              Ergonomics & Riding Posture
+            </h5>
+            <p id="feat-ergo">-</p>
+          </div>
+          <div class="feature-pill-card">
+            <h5>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5"></path></svg>
+              Front & Rear Suspension
+            </h5>
+            <p id="feat-suspension">-</p>
+          </div>
+          <div class="feature-pill-card">
+            <h5>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2"></path></svg>
+              Aerodynamics, Cowling & Fairings
+            </h5>
+            <p id="feat-aero">-</p>
+          </div>
+          <div class="feature-pill-card" style="grid-column: 1 / -1;">
+            <h5>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+              Brakes, Wheels & Contact Patch
+            </h5>
+            <p id="feat-brakes">-</p>
+          </div>
+        </div>
+
+        <!-- 3. Economic Reasons Why the Bike Was Made -->
+        <div class="economic-box">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2.2">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <h4 class="economic-title" id="econ-title">Economic Rationale & Market Origin</h4>
+          </div>
+          <p class="economic-desc" id="econ-desc">-</p>
+        </div>
+
+        <!-- 4. Popularity Areas & Cultural Context -->
+        <div class="popularity-box">
+          <h4 style="font-size: 1.05rem; font-weight: 800; color: #00b4d8; display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            Popularity Hotspots & Riding Culture
+          </h4>
+          <div class="pop-regions-list" id="pop-regions"></div>
+          <p class="pop-cultural-text" id="pop-cultural">-</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        APEX<span style="color: var(--accent-red);">MOTO</span>
+      </div>
+      <p class="footer-text">
+        A bespoke personal study portal dedicated to high-performance powerbikes. Celebrating two-wheeled engineering triumphs, cultural phenomena, and aerodynamic evolution.
+      </p>
+      <div style="font-size: 0.8rem; color: var(--text-muted);">
+        Crafted with precision • Pure Vanilla HTML5, CSS3 & ES6 • Zero Dependencies
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data/facts.js"></script>
+  <script src="data/concepts.js"></script>
+  <script src="data/bikes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
