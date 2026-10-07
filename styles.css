@@ -282,6 +282,13 @@ button {
   color: var(--text-muted);
 }
 
+.history-section,
+.concepts-section,
+.engines-section,
+.bikes-section {
+  scroll-margin-top: 85px;
+}
+
 /* ==========================================================================
    Fun History Fact Section
    ========================================================================== */

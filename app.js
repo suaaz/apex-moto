@@ -41,6 +41,9 @@ function initNavbarNavigation() {
     { id: 'bikes-section', el: document.getElementById('bikes-section') }
   ];
 
+  let isClickScrolling = false;
+  let clickTimeout = null;
+
   function setActiveLink(targetId) {
     navLinks.forEach(link => {
       const href = link.getAttribute('href') || '';
@@ -55,13 +58,21 @@ function initNavbarNavigation() {
       if (href && href.startsWith('#')) {
         const targetId = href.substring(1);
         setActiveLink(targetId);
+        
+        // Lock scroll spy while smooth scrolling to target
+        isClickScrolling = true;
+        clearTimeout(clickTimeout);
+        clickTimeout = setTimeout(() => {
+          isClickScrolling = false;
+        }, 900);
       }
     });
   });
 
   // Dynamic Scroll Spy
   window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY + 140; // offset for sticky navbar height
+    // Skip scroll-spy while animated click scroll is in progress
+    if (isClickScrolling) return;
 
     // If near the top hero area, remove active indicator
     if (window.scrollY < 200) {
@@ -69,12 +80,20 @@ function initNavbarNavigation() {
       return;
     }
 
+    // Check if scrolled near the bottom of the page
+    if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+      setActiveLink('bikes-section');
+      return;
+    }
+
+    const scrollPosition = window.scrollY + 120; // sticky navbar offset
     let activeSectionId = '';
-    for (const section of sections) {
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = sections[i];
       if (section.el) {
         const top = section.el.offsetTop;
-        const height = section.el.offsetHeight;
-        if (scrollPosition >= top && scrollPosition < top + height) {
+        if (scrollPosition >= top) {
           activeSectionId = section.id;
           break;
         }
