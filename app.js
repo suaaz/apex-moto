@@ -51,6 +51,28 @@ function initNavbarNavigation() {
     });
   }
 
+  // Mobile Navigation Toggle
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const navLinksContainer = document.getElementById('nav-links');
+
+  if (mobileToggle && navLinksContainer) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinksContainer.classList.toggle('open');
+      mobileToggle.classList.toggle('active', isOpen);
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navLinksContainer.classList.contains('open') && !navLinksContainer.contains(e.target) && e.target !== mobileToggle) {
+        navLinksContainer.classList.remove('open');
+        mobileToggle.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   // Handle click on nav items
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -58,6 +80,15 @@ function initNavbarNavigation() {
       if (href && href.startsWith('#')) {
         const targetId = href.substring(1);
         setActiveLink(targetId);
+
+        // Close mobile drawer if open
+        if (navLinksContainer) {
+          navLinksContainer.classList.remove('open');
+          if (mobileToggle) {
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+          }
+        }
         
         // Lock scroll spy while smooth scrolling to target
         isClickScrolling = true;

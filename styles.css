@@ -186,6 +186,50 @@ button {
   border-radius: var(--radius-full);
 }
 
+/* Mobile Navigation Hamburger Toggle Button */
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 101;
+}
+
+.mobile-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: var(--radius-full);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.mobile-nav-toggle.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-nav-toggle.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-nav-toggle.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ==========================================================================
    Hero Section
    ========================================================================== */
@@ -1671,4 +1715,525 @@ button {
   font-size: 0.9rem;
   font-weight: 600;
   color: #e2e8f0;
+}
+
+/* ==========================================================================
+   Comprehensive Screen Responsiveness & Mobile Ergonomics
+   ========================================================================== */
+
+/* Ensure no elements cause horizontal blowout */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* Base grid fluidity adjustments */
+.bikes-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+
+.engines-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+
+/* Tablet & Medium Screens */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .concept-breakdown-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+/* Mobile & Phablet Breakpoint (<= 860px) */
+@media (max-width: 860px) {
+  .nav-container {
+    height: 68px;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  /* Slide-down mobile drawer */
+  .nav-links {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 13, 20, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    padding: 20px 20px 28px;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-medium);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    transform: translateY(-130%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 13px 18px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background: rgba(255, 59, 48, 0.15);
+    border-color: rgba(255, 59, 48, 0.35);
+    color: #fff;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  /* Filters row stacks cleanly */
+  .filters-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .search-box {
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .category-chips-group, .brand-chips-group {
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Touch scrolling tabs */
+  .region-tabs-bar {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .region-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .engine-tab-bar {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px;
+    gap: 6px;
+  }
+
+  .engine-tab-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .engine-tab-btn {
+    padding: 8px 14px;
+    font-size: 0.84rem;
+  }
+}
+
+/* Smartphone Breakpoint (<= 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Brand Logo */
+  .brand-logo {
+    font-size: 1.15rem;
+    gap: 8px;
+  }
+
+  .brand-icon-wrapper {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-badge {
+    display: none; /* Avoid cramped header on mobile */
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 36px 0 24px;
+  }
+
+  .hero-pill {
+    font-size: 0.76rem;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 6.5vw, 2.4rem);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+
+  .hero-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-stat-item {
+    min-width: 0;
+    padding: 10px 12px;
+  }
+
+  .stat-num {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+  }
+
+  /* History Fact Card */
+  .history-section {
+    padding: 24px 0 40px;
+  }
+
+  .history-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .history-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .history-roll-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .history-title {
+    font-size: 1.28rem;
+  }
+
+  .history-summary {
+    font-size: 0.94rem;
+    margin-bottom: 14px;
+  }
+
+  .history-story {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .history-takeaway-box {
+    padding: 12px 14px;
+    gap: 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .takeaway-text {
+    font-size: 0.86rem;
+  }
+
+  /* Daily Concepts */
+  .concepts-section {
+    padding: 44px 0;
+  }
+
+  .daily-concept-display {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .concept-title {
+    font-size: 1.35rem;
+  }
+
+  .concept-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .concept-analogy-box {
+    padding: 14px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .analogy-text {
+    font-size: 0.9rem;
+  }
+
+  .concept-how-text {
+    font-size: 0.88rem;
+  }
+
+  .concept-pill-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Engine Lab */
+  .engines-section {
+    padding: 44px 0;
+  }
+
+  .engines-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .engine-card-header {
+    padding: 18px 16px 12px;
+  }
+
+  .engine-card-title {
+    font-size: 1.22rem;
+  }
+
+  .engine-summary {
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+  }
+
+  .engine-card-body {
+    padding: 0 16px 18px;
+  }
+
+  .engine-tradeoffs-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .comparison-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .comparison-title {
+    font-size: 1.15rem;
+  }
+
+  .comparison-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* Bikes Section */
+  .bikes-section {
+    padding: 44px 0 64px;
+  }
+
+  .region-tab-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 9px 10px;
+    font-size: 0.82rem;
+  }
+
+  .bikes-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .bike-image-container {
+    height: 190px;
+  }
+
+  .bike-card-body {
+    padding: 16px;
+  }
+
+  .bike-name {
+    font-size: 1.2rem;
+  }
+
+  .bike-hook {
+    font-size: 0.84rem;
+  }
+
+  .bike-specs-strip {
+    padding: 8px 4px;
+    margin-bottom: 16px;
+  }
+
+  .spec-val {
+    font-size: 0.85rem;
+  }
+
+  .spec-unit {
+    font-size: 0.6rem;
+  }
+
+  .read-more-btn {
+    height: 42px;
+    font-size: 0.84rem;
+  }
+
+  /* Deep-Dive Modal (Mobile Bottom-Sheet) */
+  .modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal-dialog {
+    max-height: 92vh;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .modal-header {
+    padding: 14px 18px;
+  }
+
+  .modal-title {
+    font-size: 1.15rem;
+  }
+
+  .modal-scroll-body {
+    padding: 18px 16px 36px;
+  }
+
+  .modal-hero-banner {
+    height: 175px;
+    margin-bottom: 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-banner-content {
+    padding: 16px;
+  }
+
+  .modal-name-hero {
+    font-size: 1.35rem;
+  }
+
+  .deep-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .deep-spec-card {
+    padding: 10px 12px;
+  }
+
+  .deep-spec-label {
+    font-size: 0.65rem;
+  }
+
+  .deep-spec-value {
+    font-size: 0.95rem;
+  }
+
+  .deep-spec-sub {
+    font-size: 0.7rem;
+  }
+
+  .features-accordion-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .feature-pill-card {
+    padding: 14px 16px;
+  }
+
+  .feature-pill-card h5 {
+    font-size: 0.86rem;
+  }
+
+  .feature-pill-card p {
+    font-size: 0.84rem;
+  }
+
+  .economic-box, .popularity-box {
+    padding: 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 18px;
+  }
+
+  .economic-title {
+    font-size: 0.96rem;
+  }
+
+  .economic-desc, .pop-cultural-text {
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 36px 0 28px;
+  }
+
+  .footer-text {
+    font-size: 0.82rem;
+  }
+}
+
+/* Extra Small Phones (<= 380px) */
+@media (max-width: 380px) {
+  .nav-container {
+    height: 62px;
+  }
+
+  .brand-logo {
+    font-size: 1.05rem;
+  }
+
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .stat-num {
+    font-size: 1.15rem;
+  }
+
+  .spec-val {
+    font-size: 0.78rem;
+  }
+
+  .deep-specs-grid {
+    grid-template-columns: 1fr;
+  }
 }
